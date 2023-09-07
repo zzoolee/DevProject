@@ -2,8 +2,10 @@ package kr.or.ddit.controller.board;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.springframework.aop.support.AopUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,14 @@ public class CrudBoardController {
 	// IBoardService 구현체 객체를 사용하기 위한 의존성 주입
 	@Inject
 	private IBoardService service;
+	
+	// 인터페이스 기반 프록시 생성되었는지 확인
+	// @PostConstruct : 빈이 등록되고 초기화 단계에서 바로 확인할 때 사용
+	@PostConstruct
+	public void init() {
+		log.info("aopProxy 상태 (interface 기반) : {} " + AopUtils.isAopProxy(service)); // false -> 켜줘야 한다
+		log.info("aopProxy 상태 (class 기반) : {} " + AopUtils.isCglibProxy(service));
+	}
 	
 	@RequestMapping(value="/register", method = RequestMethod.GET)
 	public String crudRegisterForm() {

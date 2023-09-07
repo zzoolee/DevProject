@@ -46,7 +46,7 @@
 		</table>
 		<div>
 			<button type="submit">수정</button>
-			<button type="button" onclick="javascript:location.href='/item/list'">목록</button>
+			<button type="button" onclick="javascript:location.href='/item2/list'">목록</button>
 		</div>
 	</form>
 </body>

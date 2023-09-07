@@ -38,7 +38,7 @@
 	<!-- Tiles 설정 끝 -->
 	
 	<!-- kr.or.ddit 패키지를 컴포넌트 스캔 대상으로 함(Runtime시 basePackage 안에 들어있는 자원들을 객체화 하기 위함) -->
-	<context:component-scan base-package="kr.or.ddit" />
+	<context:component-scan base-package="kr.or.ddit.controller" /> <!-- 모든 대상을 빈으로 올리겠다는 뜻 -->
 	
 	<!-- 
 		서블릿 표준용 multipartResolver를 스프링 빈으로 정의
