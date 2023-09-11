@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%-- <%@ page session="false" %> --%>
 <html>
 <head>
 	<title>Home</title>
@@ -10,5 +11,8 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+아이디 : ${userInfo.userId }<br/>
+이름 : ${userInfo.userName }<br/>
 </body>
 </html>

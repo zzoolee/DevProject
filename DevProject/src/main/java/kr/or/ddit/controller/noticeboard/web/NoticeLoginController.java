@@ -185,7 +185,7 @@ public class NoticeLoginController {
 		byte[] buffer = new byte[5 + 5 * 5];
 	    new Random().nextBytes(buffer);
 	    Base32 codec = new Base32();
-	    byte[] secretKey = Arrays.copyOf(buffer, 10);  //16자 이상이어야 하므로 10으로 설정 필요
+	    byte[] secretKey = Arrays.copyOf(buffer, 10);  // 16자 이상이어야 하므로 10으로 설정 필요
 	    byte[] bEncodedKey = codec.encode(secretKey);
 
 	    // 인증키 생성

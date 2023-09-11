@@ -40,6 +40,25 @@
 	<!-- kr.or.ddit 패키지를 컴포넌트 스캔 대상으로 함(Runtime시 basePackage 안에 들어있는 자원들을 객체화 하기 위함) -->
 	<context:component-scan base-package="kr.or.ddit.controller" /> <!-- 모든 대상을 빈으로 올리겠다는 뜻 -->
 	
+	<!-- 인터셉터 설정 -->
+	<beans:bean id="loginInterceptor" class="kr.or.ddit.controller.intercept.LoginInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/login1"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<beans:bean id="accessLoggingInterceptor" class="kr.or.ddit.controller.intercept.AccessLoggingInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resource/**"/>
+			<beans:ref bean="accessLoggingInterceptor"/>
+		</interceptor>
+	</interceptors>
+	<!-- 인터셉터 끝 -->
+	
 	<!-- 
 		서블릿 표준용 multipartResolver를 스프링 빈으로 정의
 		- StandardServletMultipartResolver 사용시 설정

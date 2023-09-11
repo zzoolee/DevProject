@@ -15,7 +15,7 @@
 		<table>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="title" id="title" value="${board.title }"></td>
+				<td><input type="text" name="title2" id="title" value="${board.title2 }"></td>
 			</tr>
 			<tr>
 				<td>작성자</td>
@@ -48,10 +48,10 @@ $(function(){
 		var writer = $("#writer").val();
 		var content = $("#content").val();
 		
-		if(title == null || title == ""){
-			alert("제목을 입력해주세요.");
-			return false;
-		}
+// 		if(title == null || title == ""){
+// 			alert("제목을 입력해주세요.");
+// 			return false;
+// 		}
 		if(writer == null || writer == ""){
 			alert("작성자를 입력해주세요.");
 			return false;
@@ -69,7 +69,7 @@ $(function(){
 	});
 	
 	btnList.on("click", function(){
-		location.href = "crud/board/list";
+		location.href = "/crud/board/list";
 	});
 });
 </script>

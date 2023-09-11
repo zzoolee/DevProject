@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import kr.or.ddit.controller.board.BoardRecordNotFoundException;
 import kr.or.ddit.mapper.BoardMapper;
 import kr.or.ddit.service.IBoardService;
 import kr.or.ddit.vo.Board;
@@ -17,7 +18,7 @@ public class BoardServiceImpl implements IBoardService{
 
 	@Inject
 	private BoardMapper mapper;
-		
+	
 	@Override
 	public void register(Board board) {
 		log.info("[serviceImpl] register");
@@ -31,9 +32,17 @@ public class BoardServiceImpl implements IBoardService{
 	}
 
 	@Override
-	public Board read(int boardNo) {
+	public Board read(int boardNo) throws Exception {
 		log.info("[serviceImpl] read");
-		return mapper.read(boardNo);
+		
+		Board board = mapper.read(boardNo);
+		if(board == null) {
+			throw new BoardRecordNotFoundException("Not Found boardNo : " + boardNo);
+		}
+		
+//		return mapper.read(boardNo);
+		// 16장 예외처리시 사용
+		return board;
 	}
 
 	@Override
