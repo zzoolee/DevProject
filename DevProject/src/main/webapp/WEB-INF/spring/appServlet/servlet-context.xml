@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -39,6 +41,7 @@
 	
 	<!-- kr.or.ddit 패키지를 컴포넌트 스캔 대상으로 함(Runtime시 basePackage 안에 들어있는 자원들을 객체화 하기 위함) -->
 	<context:component-scan base-package="kr.or.ddit.controller" /> <!-- 모든 대상을 빈으로 올리겠다는 뜻 -->
+	<context:component-scan base-package="kr.or.ddit.security" />
 	
 	<!-- 인터셉터 설정 -->
 	<beans:bean id="loginInterceptor" class="kr.or.ddit.controller.intercept.LoginInterceptor"></beans:bean>
@@ -67,5 +70,8 @@
 <!-- 	<beans:bean id="multipartResolver" -->
 <!-- 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"> -->
 <!-- 	</beans:bean> -->
+
+	<!-- Namespaces에서 security 버전 없는 걸로 추가 -->
+	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled"/>
 	
 </beans:beans>

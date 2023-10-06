@@ -259,6 +259,33 @@
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
         </dependency>
+        
+        <!-- 스프링 시큐리티 의존 라이브러리 등록 -->
+		<!-- 스프링 시큐리티를 웹에서 동작하도록 해준다. -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		<!-- 스프링 시큐리티 설정을 도와준다. -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		<!-- 스프링 시큐리티 일반적인 기능들을 지원한다. -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		<!-- 스프링 시큐리티와 태그 라이브러리를 연결해준다. -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		<!-- 스프링 시큐리티 의존 라이브러리 등록 끝 -->
 		
 		<!-- Test -->
 		<dependency>

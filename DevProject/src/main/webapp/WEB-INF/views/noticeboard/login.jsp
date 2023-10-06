@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <div class="login-box">
 	<div class="login-logo">
 		<a href="../../index2.html"><b>DDIT</b>BOARD</a>
@@ -7,9 +8,9 @@
 		<div class="card-body login-card-body">
 			<p class="login-box-msg">로그인을 진행해주세요</p>
 
-			<form action="/notice/loginCheck.do" method="post" id="signForm">
+			<form action="/login" method="post" id="signForm">
 				<div class="input-group mb-3">
-					<input type="text" class="form-control" id="memId" name="memId" placeholder="아이디를 입력해주세요">
+					<input type="text" class="form-control" id="memId" name="username" placeholder="아이디를 입력해주세요">
 						<div class="input-group-append">
 							<div class="input-group-text">
 								<span class="fas fa-envelope"></span>
@@ -18,7 +19,7 @@
 					<span class="error invalid-feedback" style="display:block;">${errors.memId }</span>
 				</div>
 				<div class="input-group mb-3">
-					<input type="password" class="form-control" id="memPw" name="memPw" placeholder="비밀번호를 입력해주세요">
+					<input type="password" class="form-control" id="memPw" name="password" placeholder="비밀번호를 입력해주세요">
 					<div class="input-group-append">
 						<div class="input-group-text">
 							<span class="fas fa-lock"></span>
@@ -34,6 +35,7 @@
 						<button type="button" class="btn btn-primary btn-block" id="loginBtn">로그인</button>
 					</div>
 				</div>
+				<sec:csrfInput/>
 			</form>
 
 

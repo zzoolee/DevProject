@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <div class="register-box">
 	<div class="card card-outline card-primary">
 		<div class="card-header text-center">
@@ -82,6 +83,7 @@
 						<button type="button" class="btn btn-primary btn-block" id="signupBtn">가입하기</button>
 					</div>
 				</div>
+				<sec:csrfInput/>
 			</form>
 		</div>
 	</div>
@@ -123,6 +125,9 @@ $(function(){
 			type: "post",
 			url: "/notice/idCheck.do",
 // 			data: {memId : id},			// 방법 1) contentType 설정 안함/ data도 {id : 1}과 같이 설정
+			beforeSend: function(xhr){
+				xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}"); // 보내기 전에 토큰 설정
+			},
 			data: JSON.stringify(data), // 방법 2)
 			contentType: "application/json; charset=utf-8", // 방법 2)
 			success: function(res){

@@ -6,7 +6,9 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/security-context.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -127,4 +129,16 @@
 <!-- 		<location>/WEB-INF/views/error/errorCommon.jsp</location> -->
 <!-- 	</error-page> -->
 	<!-- 5. 기본 에러 페이지 설정(예외처리) 끝 -->
+	
+	<!-- 서블릿 필터 클래스를 서블릿 컨테이너에 등록함(스프링 시큐리티 관련 필터 등록) -->
+	<!-- 파일업로드/다운로드 다음에 시큐리티 작성해야 함 -> 순서 중요!!! -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 </web-app>

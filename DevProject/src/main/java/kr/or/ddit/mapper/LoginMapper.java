@@ -9,5 +9,7 @@ public interface LoginMapper {
 	public int signup(DDITMemberVO memberVO);
 	public String findId(DDITMemberVO memberVO);
 	public String findPw(DDITMemberVO memberVO);
+	public DDITMemberVO readByUserId(String username);
+	public void signupAuth(int memNo);
 
 }
